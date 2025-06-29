@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#4F46E5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- SEO Meta Tags -->
+    <title>About Us - Tic Tac Toe Game Team</title>
+    <meta name="description" content="Learn about the team behind Tic Tac Toe game. Our mission is to provide a fun, engaging multiplayer gaming experience for players of all ages.">
+    <meta name="keywords" content="tic tac toe team, tictactoe developers, game creators, multiplayer game about">
+    <meta name="author" content="Tic Tac Toe Game">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="About Us - Tic Tac Toe Game Team">
+    <meta property="og:description" content="Learn about the team behind Tic Tac Toe game. Our mission is to provide a fun, engaging multiplayer gaming experience.">
+    <meta property="og:image" content="https://game-tac-toe.netlify.app/assets/logo.png">
+    <meta property="og:url" content="https://game-tac-toe.netlify.app/pages/about.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us - Tic Tac Toe Game Team">
+    <meta name="twitter:description" content="Learn about the team behind Tic Tac Toe game. Our mission is to provide a fun, engaging multiplayer gaming experience.">
+    <meta name="twitter:image" content="https://game-tac-toe.netlify.app/assets/logo.png">
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About Tic Tac Toe Game Team",
+        "description": "Information about the team behind the Tic Tac Toe game",
+        "url": "https://game-tac-toe.netlify.app/pages/about.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Tic Tac Toe Game",
+            "url": "https://game-tac-toe.netlify.app"
+        }
+    }
+    </script>
+    
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link rel="apple-touch-icon" href="../assets/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen pt-16 pb-20 sm:pb-8 px-2 sm:px-4">
+    <!-- Breadcrumbs -->
+    <nav class="bg-gray-100 py-2 px-4 mb-4" aria-label="Breadcrumb">
+        <ol class="flex items-center space-x-2 text-sm text-gray-600">
+            <li>
+                <a href="/" class="hover:text-primary">Home</a>
+            </li>
+            <li>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+            </li>
+            <li class="text-gray-800">About Us</li>
+        </ol>
+    </nav>
+
+    <!-- Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo, logo-text">Tic Tac Toe</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="privacy.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        Privacy policy
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="terms.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Terms and Conditions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="faq.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        FAQ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="articles.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-.5-1.5L15 4" />
+                        </svg>
+                        Articles
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- About Content -->
+    <div class="container mx-auto min-h-[calc(100vh-4rem)] flex items-center justify-center py-8 sm:py-12">
+        <div class="max-w-4xl w-full glass-effect rounded-2xl shadow-xl p-6 sm:p-8 md:p-10">
+            <h1 class="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                About Us
+            </h1>
+            
+            <div class="space-y-8">
+                <div class="glass-effect rounded-xl p-6 bg-gradient-to-r from-indigo-100 to-purple-100">
+                    <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Creator</h2>
+                    <p class="text-gray-700 mb-4">
+                        This Tic Tac Toe application was created by <span class="font-semibold">Rehaan Hussain</span>, 
+                        a passionate developer and entrepreneur dedicated to creating engaging and innovative digital experiences.
+                    </p>
+                </div>
+
+                <div class="glass-effect rounded-xl p-6 bg-gradient-to-r from-indigo-100 to-purple-100">
+                    <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Our Mission</h2>
+                    <p class="text-gray-700 mb-4">
+                        This Tic Tac Toe application was built with the vision of bringing people together through classic gaming experiences. 
+                        We believe in creating simple yet engaging platforms that connect people across the globe. Our goal is to provide 
+                        a seamless gaming experience that combines the nostalgia of traditional games with modern technology and design.
+                    </p>
+                    <p class="text-gray-700">
+                        The application features multiple game modes, including local multiplayer, AI challenges, and online play, 
+                        making it accessible and enjoyable for players of all ages and skill levels.
+                    </p>
+                </div>
+
+                <!-- <div class="glass-effect rounded-xl p-6 bg-gradient-to-r from-indigo-100 to-purple-100">
+                    <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Other Ventures</h2>
+                    <p class="text-gray-700 mb-4">
+                        Rehaan is also the founder of several other platforms:
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <a href="https://freelancersforge.noecities.org" target="_blank" class="text-indigo-600 hover:text-indigo-800">Freelancers Forge</a>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <a href="https://ffbuyorsell.netlify.app" target="_blank" class="text-indigo-600 hover:text-indigo-800">FFBuyOrSell</a>
+                        </li>
+                    </ul>
+                </div> -->
+
+                <div class="glass-effect rounded-xl p-6 bg-gradient-to-r from-indigo-100 to-purple-100">
+                    <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Connect With Us</h2>
+                    <p class="text-gray-700 mb-4">
+                        Stay updated with our latest projects and developments by following us on Instagram:
+                    </p>
+                    <div class="space-y-4">
+                        <a href="https://www.instagram.com/rehaanhussain320" target="_blank" 
+                           class="inline-flex items-center text-indigo-600 hover:text-indigo-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            @rehaanhussain320
+                        </a>
+                        <a href="https://www.instagram.com/tooluxeapp/" target="_blank" 
+                           class="inline-flex items-center text-indigo-600 hover:text-indigo-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            @tooluxeapp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-white shadow-lg py-4 px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <div class="text-sm text-gray-600">
+                    © 2025 Tic Tac Toe. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="about.html" class="text-sm text-gray-600 hover:text-indigo-600">About</a>
+                    <a href="privacy.html" class="text-sm text-gray-600 hover:text-indigo-600">Privacy Policy</a>
+                    <a href="terms.html" class="text-sm text-gray-600 hover:text-indigo-600">Terms</a>
+                    <a href="faq.html" class="text-sm text-gray-600 hover:text-indigo-600">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/navbar.js"></script>
+</body>
+
+</html>

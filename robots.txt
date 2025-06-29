@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /APK/
+Disallow: /download file/
+Disallow: /firebase-rules.json
+
+Sitemap: https://game-tac-toe.netlify.app/sitemap.xml 

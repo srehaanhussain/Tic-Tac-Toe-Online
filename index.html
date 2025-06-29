@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#4F46E5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- SEO Meta Tags -->
+    <title>Tic Tac Toe - Play Free Online Multiplayer Game</title>
+    <meta name="description"
+        content="Play Tic Tac Toe online for free! Challenge friends in multiplayer mode or play against AI. Available on web and mobile devices. Download our app for the best gaming experience.">
+    <meta name="keywords"
+        content="tic tac toe, tictactoe, multiplayer game, online game, free game, mobile game, browser game">
+    <meta name="author" content="Tic Tac Toe Game">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Tic Tac Toe - Play Free Online Multiplayer Game">
+    <meta property="og:description"
+        content="Play Tic Tac Toe online for free! Challenge friends in multiplayer mode or play against AI. Available on web and mobile devices.">
+    <meta property="og:image" content="https://game-tac-toe.netlify.app/assets/logo.png">
+    <meta property="og:url" content="https://game-tac-toe.netlify.app">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tic Tac Toe - Play Free Online Multiplayer Game">
+    <meta name="twitter:description"
+        content="Play Tic Tac Toe online for free! Challenge friends in multiplayer mode or play against AI.">
+    <meta name="twitter:image" content="https://game-tac-toe.netlify.app/assets/logo.png">
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/yes.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js" defer></script>
+
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Tic Tac Toe",
+        "url": "https://game-tac-toe.netlify.app",
+        "description": "Play Tic Tac Toe online for free! Challenge friends in multiplayer mode or play against AI.",
+        "applicationCategory": "Game",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "downloadUrl": "https://download-tic-tac-toe.netlify.app/",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "softwareVersion": "1.0.0"
+    }
+    </script>
+
+</head>
+
+<body class="min-h-screen pt-16 pb-20 sm:pb-8 px-2 sm:px-4">
+    <!-- Loading Screen -->
+
+    <div class="loading-screen">
+        <div class="loading-animation">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="loading-text">Loading Tic Tac Toe...</div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"
+        style="position: fixed; top: 80px; left: 50%; transform: translateX(-50%); z-index: 1000;"></div>
+
+    <!-- New Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="flex items-center">
+                <img src="assets/logo.png" alt="Tic Tac Toe Logo" class="h-10 w-10 mr-2 rounded-full">
+                <a href="#" class="nav-logo, logo-text">Tic Tac Toe</a>
+            </div>
+            <ul class="nav-menu">
+                <button class="close-menu-btn hidden" aria-label="Close Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="close-icon" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/about.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/privacy.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        Privacy policy
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/terms.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Terms and Conditions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/faq.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        FAQ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/articles.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-.5-1.5L15 4" />
+                        </svg>
+                        Articles
+                    </a>
+                </li>
+            </ul>
+            <button onclick="window.location.reload()" class="refresh-button" aria-label="Refresh Page">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24">
+                    <defs>
+                        <linearGradient id="refreshGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#4f46e5" />
+                            <stop offset="100%" style="stop-color:#9333ea" />
+                        </linearGradient>
+                    </defs>
+                    <path stroke="url(#refreshGradient)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Auth Section -->
+    <div id="authSection"
+        class="container mx-auto min-h-[calc(100vh-4rem)] flex items-center justify-center py-8 sm:py-12">
+        <div
+            class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl glass-effect rounded-2xl shadow-xl p-4 sm:p-6 md:p-8">
+            <h3
+                class="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Welcome to Tic Tac Toe</h2>
+
+                <!-- Install App Button -->
+                <div id="authInstallButtonContainer" class="mb-6 text-center" style="display: none;">
+                    <button id="authInstallButton"
+                        class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold text-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Install App
+                    </button>
+                </div>
+
+                <div id="loginForm" class="space-y-4">
+                    <div class="relative">
+                        <input type="email" id="loginEmail" placeholder="Email"
+                            class="w-full p-4 border-2 border-indigo-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus">
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="loginPassword" placeholder="Password"
+                            class="w-full p-4 border-2 border-indigo-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus">
+                    </div>
+                    <button onclick="login()"
+                        class="w-full btn-primary text-white p-4 rounded-xl font-semibold text-lg">Login</button>
+                    <button onclick="showRegisterForm()"
+                        class="w-full btn-secondary text-indigo-700 p-4 rounded-xl font-semibold text-lg">Register</button>
+                </div>
+                <div id="registerForm" class="hidden space-y-4">
+                    <div class="relative">
+                        <input type="email" id="registerEmail" placeholder="Email"
+                            class="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus">
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="registerPassword" placeholder="Password"
+                            class="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus">
+                    </div>
+                    <div class="relative">
+                        <input type="text" id="username" placeholder="Username"
+                            class="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus">
+                    </div>
+                    <button onclick="register()"
+                        class="w-full btn-primary text-white p-4 rounded-xl font-semibold text-lg">Register</button>
+                    <button onclick="showLoginForm()"
+                        class="w-full btn-secondary text-gray-700 p-4 rounded-xl font-semibold text-lg">Back to
+                        Login</button>
+                    <div class="mt-4 text-center">
+                        <a href="pages/blogs/getting-started.html"
+                            class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center justify-center">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 min-w-[1rem] min-h-[1rem]" fill="none" viewBox="0 0 24 24" stroke="currentColor" preserveAspectRatio="xMidYMid meet">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg> -->
+                            Need a guide? Check out our Getting Started page
+                        </a>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Game Modes Section -->
+    <div id="gameModesSection"
+        class="hidden container mx-auto min-h-[calc(100vh-4rem)] flex items-center justify-center py-8 sm:py-12">
+        <div
+            class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl glass-effect rounded-2xl shadow-xl p-4 sm:p-6 md:p-8">
+            <h2
+                class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Select Game Mode</h2>
+            <div class="space-y-4">
+                <button onclick="window.location.href='pvp/index.html'"
+                    class="w-full btn-gradient text-white p-4 rounded-xl font-semibold text-lg flex items-center justify-center">
+                    <i class="fas fa-users text-xl sm:text-2xl md:text-2xl mr-3"></i>
+                    Player vs Player (Local)
+                </button>
+                <button onclick="window.location.href='pvai/index.html'"
+                    class="w-full btn-gradient text-white p-4 rounded-xl font-semibold text-lg flex items-center justify-center">
+                    <i class="fas fa-robot text-xl sm:text-2xl md:text-2xl mr-3"></i>
+                    Player vs AI
+                </button>
+                <button onclick="navigateTo('players')"
+                    class="w-full btn-gradient text-white p-4 rounded-xl font-semibold text-lg flex items-center justify-center">
+                    <i class="fas fa-globe text-xl sm:text-2xl md:text-2xl mr-3"></i>
+                    Player vs Player (Online)
+                </button>
+
+            </div>
+            <hr>
+            <!-- Leaderboard Section -->
+            <div
+                class="mt-8 glass-effect rounded-xl p-6 bg-gradient-to-r from-indigo-100 to-purple-100 border border-gray-200 shadow-lg">
+                <h3 class="text-2xl font-bold mb-6 text-center logo-text2" style="text-align: center;">Online Player
+                    Leaderboard</h3>
+                <div class="overflow-x-auto rounded-lg">
+                    <table class="w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Rank</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Username</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Points</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Wins</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody" class="divide-y divide-gray-200">
+                            <!-- Leaderboard entries will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                <button onclick="loadLeaderboard()"
+                    class="w-full mt-6 btn-gradient text-white p-3 rounded-xl text-sm font-semibold transition-colors duration-200 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 refresh-icon" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    Refresh Leaderboard
+                </button>
+            </div>
+
+            <!-- Top 3 Winner Animation -->
+            <div id="top3WinnerAnimation"
+                class="hidden mt-8 glass-effect rounded-xl p-6 bg-gradient-to-r from-yellow-100 to-amber-100 border border-yellow-200 shadow-lg text-center">
+                <div class="winner-animation mb-4">
+                    <svg class="w-16 h-16 mx-auto text-yellow-500 animate-bounce" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-yellow-700 mb-2">Congratulations!</h3>
+                <p class="text-lg text-yellow-600" id="top3Message">You are in the top 3 players!</p>
+            </div>
+
+            <div class="mt-4 text-center">
+                <a href="pages/blogs/getting-started.html"
+                    class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center justify-center">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 min-w-[1rem] min-h-[1rem]" fill="none" viewBox="0 0 24 24" stroke="currentColor" preserveAspectRatio="xMidYMid meet">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                 </svg> -->
+                    Need a guide? Check out our Getting Started page
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Online Players Section -->
+    <div id="onlinePlayersSection"
+        class="hidden container mx-auto min-h-[calc(100vh-4rem)] flex items-center justify-center py-8 sm:py-12">
+        <div
+            class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl glass-effect rounded-2xl shadow-xl p-4 sm:p-6 md:p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2
+                    class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    Online Players</h2>
+                <button onclick="loadOnlinePlayers()"
+                    class="btn-primary text-white p-3 rounded-xl hover:scale-105 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Add search input -->
+            <div class="relative mb-6">
+                <input type="text" id="playerSearch" placeholder="Search players..."
+                    class="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus">
+                <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+            </div>
+            <div id="playersList" class="space-y-3 max-h-96 overflow-y-auto pr-2">
+                <!-- Players will be listed here -->
+            </div>
+            <button onclick="navigateToGameModes()"
+                class="w-full mt-6 btn-secondary text-gray-700 p-4 rounded-xl font-semibold text-lg">Back to Game
+                Modes</button>
+        </div>
+    </div>
+
+    <!-- Game Board Section -->
+    <div id="gameSection" class="hidden container mx-auto py-8 sm:py-12">
+        <div
+            class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto glass-effect rounded-2xl shadow-xl p-4 sm:p-6 md:p-8">
+            <div class="text-center mb-6">
+                <h2 id="gameStatus"
+                    class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2 game-status">
+                    Player X's Turn</h2>
+                <p id="gameMode" class="text-gray-600 text-lg"></p>
+            </div>
+
+            <!-- Score Display -->
+            <div class="score-board rounded-xl p-6 mb-6">
+                <h3
+                    class="text-xl font-semibold text-center mb-3 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    Score Board</h3>
+                <div id="scoreDisplay" class="text-base">
+                    <!-- Scores will be displayed here by the new score system -->
+                </div>
+                <button onclick="scoreSystem.resetScores()"
+                    class="w-full mt-4 btn-secondary text-gray-700 p-3 rounded-xl text-sm font-semibold">Reset
+                    Scores</button>
+            </div>
+
+            <!-- Chat Container -->
+            <div class="chat-container rounded-xl p-4 mb-6 bg-gray-50 border border-gray-200">
+                <h3 class="text-lg font-semibold text-center mb-3 text-gray-700">Chat with Opponent</h3>
+                <div id="chatMessages"
+                    class="chat-messages h-32 overflow-y-auto mb-3 p-2 bg-white rounded-lg border border-gray-200">
+                    <!-- Chat messages will appear here -->
+                </div>
+                <div class="flex gap-2">
+                    <input type="text" id="chatInput" placeholder="Type your message..."
+                        class="flex-1 p-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all">
+                    <button onclick="sendChatMessage()"
+                        class="btn-primary text-white p-2 rounded-lg hover:scale-105 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-6 w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw] xl:max-w-[50vw] mx-auto">
+                <div class="game-cell aspect-square rounded-xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold cursor-pointer transition-all"
+                    onclick="makeMove(0)"></div>
+                <div class="game-cell aspect-square rounded-xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold cursor-pointer transition-all"
+                    onclick="makeMove(1)"></div>
+                <div class="game-cell aspect-square rounded-xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold cursor-pointer transition-all"
+                    onclick="makeMove(2)"></div>
+                <div class="game-cell aspect-square rounded-xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold cursor-pointer transition-all"
+                    onclick="makeMove(3)"></div>
+                <div class="game-cell aspect-square rounded-xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold cursor-pointer transition-all"
+                    onclick="makeMove(4)"></div>
+                <div class="game-cell aspect-square rounded-xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold cursor-pointer transition-all"
+                    onclick="makeMove(5)"></div>
+                <div class="game-cell aspect-square rounded-xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold cursor-pointer transition-all"
+                    onclick="makeMove(6)"></div>
+                <div class="game-cell aspect-square rounded-xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold cursor-pointer transition-all"
+                    onclick="makeMove(7)"></div>
+                <div class="game-cell aspect-square rounded-xl flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold cursor-pointer transition-all"
+                    onclick="makeMove(8)"></div>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="resetGame()"
+                    class="w-full btn-primary text-white p-4 rounded-xl font-semibold text-lg">Reset Game</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Contact Form Section -->
+    <div id="contactSection"
+        class="hidden container mx-auto min-h-[calc(100vh-4rem)] flex items-center justify-center py-8 sm:py-12">
+        <div
+            class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl glass-effect rounded-2xl shadow-xl p-4 sm:p-6 md:p-8">
+            <h2
+                class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Contact Admin</h2>
+            <form name="contact" netlify class="space-y-4">
+                <div class="relative">
+                    <input type="text" name="name" placeholder="Your Name" required
+                        class="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus">
+                </div>
+                <div class="relative">
+                    <input type="email" name="email" placeholder="Your Email" required
+                        class="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus">
+                </div>
+                <div class="relative">
+                    <textarea name="message" placeholder="Your Message" required rows="4"
+                        class="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus"></textarea>
+                </div>
+                <button type="submit" class="w-full btn-primary text-white p-4 rounded-xl font-semibold text-lg">Send
+                    Message</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- User Account Section -->
+    <div id="userAccountSection"
+        class="hidden min-h-[calc(100vh-4rem)] w-full overflow-y-auto flex items-center justify-center py-8 sm:py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto glass-effect rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-4 sm:p-6 md:p-8">
+                <div
+                    class="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 mb-6">
+                    <div class="flex items-center space-x-3 sm:space-x-4">
+                        <div id="profileAvatar"
+                            class="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        </div>
+                        <div>
+                            <h3 class="text-base sm:text-lg font-semibold text-primary" id="dropdownUserName"></h3>
+                            <p class="text-xs sm:text-sm text-secondary" id="dropdownUserEmail"></p>
+                            <button onclick="showEditUsernameModal()"
+                                class="mt-2 text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                                Edit Username
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2 sm:space-x-3 p-2 rounded-lg bg-gray-50">
+                        <label class="theme-toggle">
+                            <input type="checkbox" id="themeToggle">
+                            <span class="theme-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Install App Button -->
+                <div id="profileInstallButtonContainer" class="mb-6 text-center" style="display: none;">
+                    <button id="profileInstallButton"
+                        class="btn-install w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold text-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl btn-install">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Install App
+                    </button>
+                </div>
+
+                <div id="userStats" class="space-y-4 border-b border-gray-100 pb-4 sm:pb-6 mb-4 sm:mb-6">
+                    <!-- Stats will be dynamically inserted here -->
+                </div>
+
+                <!-- Verification Info -->
+                <div class="mb-6 p-4 bg-indigo-50 rounded-xl border border-indigo-100">
+                    <div class="flex items-start space-x-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 flex-shrink-0"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                            <h4 class="text-sm font-semibold text-indigo-800 mb-1">How to Get Verified</h4>
+                            <p class="text-sm text-indigo-600">Win 200 games to unlock the verified badge (✓) on your
+                                profile. Keep playing to reach this milestone!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2 sm:space-y-3">
+                    <button onclick="navigateToGameModes()"
+                        class="w-full text-left px-4 py-3 text-primary hover:bg-gray-50 rounded-lg transition-all flex items-center bg-gray-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-primary" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-sm sm:text-base font-medium">Game Modes</span>
+                    </button>
+                    <button onclick="resetUserStats()"
+                        class="w-full text-left px-4 py-3 text-yellow-700 hover:bg-yellow-50 rounded-lg transition-all flex items-center bg-yellow-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        <span class="text-sm sm:text-base font-medium">Reset Stats</span>
+                    </button>
+                    <button onclick="shareApp()"
+                        class="w-full text-left px-4 py-3 text-indigo-700 hover:bg-indigo-50 rounded-lg transition-all flex items-center bg-indigo-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                        </svg>
+                        <span class="text-sm sm:text-base font-medium">Share App</span>
+                    </button>
+                    <button onclick="shareUserStats()"
+                        class="w-full text-left px-4 py-3 text-green-700 hover:bg-green-50 rounded-lg transition-all flex items-center bg-green-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2h-2" />
+                        </svg>
+                        <span class="text-sm sm:text-base font-medium">Share Stats as Image</span>
+                    </button>
+                    <button onclick="confirmDeleteAccount()"
+                        class="w-full text-left px-4 py-3 text-red-700 hover:bg-red-50 rounded-lg transition-all flex items-center bg-red-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                        <span class="text-sm sm:text-base font-medium">Delete Account</span>
+                    </button>
+                    <button onclick="logout()"
+                        class="w-full text-left px-4 py-3 text-red-700 hover:bg-red-50 rounded-lg transition-all flex items-center bg-red-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        <span class="text-sm sm:text-base font-medium">Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Username Edit Modal -->
+    <div id="usernameEditModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+        onclick="handleModalClick(event)">
+        <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4 glass-effect transform transition-all duration-300 scale-95 opacity-0"
+            id="modalContent">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold text-gray-800">Edit Username</h3>
+                <button onclick="hideEditUsernameModal()" class="text-gray-500 hover:text-gray-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="relative">
+                    <input type="text" id="newUsername" placeholder="New Username"
+                        class="w-full p-4 border-2 border-indigo-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all input-focus">
+                    <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                        <span class="text-xs text-gray-500" id="usernameLength">0/20</span>
+                    </div>
+                </div>
+                <div class="flex space-x-3">
+                    <button onclick="updateUsername()" id="saveUsernameBtn"
+                        class="flex-1 btn-primary text-white p-3 rounded-xl text-sm font-semibold transition-all hover:scale-105">
+                        <span class="flex items-center justify-center">
+                            <span class="save-text">Save Changes</span>
+                            <span class="loading-spinner hidden animate-spin mr-2">⌛</span>
+                        </span>
+                    </button>
+                    <button onclick="hideEditUsernameModal()"
+                        class="flex-1 btn-secondary text-gray-700 p-3 rounded-xl text-sm font-semibold transition-all hover:scale-105">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/firebase-config.js" defer></script>
+    <script src="js/custom-alert.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/new-score-system.js" defer></script>
+    <script src="js/game.js" defer></script>
+    <script src="js/profile.js" defer></script>
+    <script src="js/leaderboard.js" defer></script>
+    <script src="js/navbar.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/notifications.js" defer></script>
+    <script src="js/pwa.js" defer></script>
+
+    <!-- Mobile Bottom Navbar -->
+    <div class="mobile-navbar fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 z-50">
+        <div class="flex justify-around items-center h-16 px-4">
+            <button onclick="navigateTo('game')"
+                class="nav-item flex flex-col items-center justify-center w-full h-full" data-section="game">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="text-xs mt-1">Game</span>
+            </button>
+            <button onclick="navigateTo('players')"
+                class="nav-item flex flex-col items-center justify-center w-full h-full" data-section="players">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span class="text-xs mt-1">Players</span>
+            </button>
+            <button onclick="navigateTo('contact')"
+                class="nav-item flex flex-col items-center justify-center w-full h-full" data-section="contact">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="text-xs mt-1">Contact</span>
+            </button>
+            <button onclick="navigateTo('profile')"
+                class="nav-item flex flex-col items-center justify-center w-full h-full" data-section="profile">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span class="text-xs mt-1">Profile</span>
+            </button>
+            <button class="nav-item flex flex-col items-center justify-center w-full h-full accessibility-btn"
+                aria-label="Options Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 accessibility-icon" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h12M20 6a2 2 0 11-4 0 2 2 0 014 0zM4 12h12M20 12a2 2 0 11-4 0 2 2 0 014 0zM4 18h12M20 18a2 2 0 11-4 0 2 2 0 014 0z">
+                        <animate attributeName="stroke-dasharray" from="0,24" to="24,0" dur="0.3s"
+                            begin="accessibility-btn.mouseover" fill="freeze" />
+                        <animate attributeName="stroke-dasharray" from="24,0" to="0,24" dur="0.3s"
+                            begin="accessibility-btn.mouseleave" fill="freeze" />
+                    </path>
+                </svg>
+                <span class="text-xs mt-1">More</span>
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>

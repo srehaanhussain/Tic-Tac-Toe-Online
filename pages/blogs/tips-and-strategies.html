@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#4F46E5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <title>Tips and Strategies - Tic Tac Toe</title>
+    <link rel="icon" type="image/png" href="../../assets/logo.png">
+    <link rel="apple-touch-icon" href="../../assets/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../../css/styles.css" rel="stylesheet">
+    <link href="/pages/css/navbar.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen pt-16 pb-20 sm:pb-8 px-2 sm:px-4">
+    <!-- Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo, logo-text">Tic Tac Toe</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/pages/about.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/pages/privacy.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        Privacy policy
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/pages/terms.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Terms and Conditions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/pages/faq.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        FAQ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/pages/articles.html" class="nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-.5-1.5L15 4" />
+                        </svg>
+                        Articles
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Article Content -->
+    <div class="container mx-auto max-w-4xl py-8 sm:py-12">
+        <article class="glass-effect rounded-2xl p-6 sm:p-8 md:p-10">
+            <h1 class="text-4xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Tips and Strategies for Tic Tac Toe
+            </h1>
+            
+            <div class="prose prose-indigo max-w-none">
+                <p class="text-gray-700 mb-6">
+                    While Tic Tac Toe might seem simple, mastering it requires understanding key strategies and patterns. 
+                    This guide will help you improve your gameplay and increase your chances of winning.
+                </p>
+
+                <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Basic Strategies</h2>
+                <div class="space-y-4 mb-6">
+                    <div class="glass-effect rounded-xl p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-indigo-700">1. Center Control</h3>
+                        <p class="text-gray-700">
+                            Always try to take the center position first. It gives you the most opportunities to create winning combinations.
+                        </p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-indigo-700">2. Corner Play</h3>
+                        <p class="text-gray-700">
+                            If you can't get the center, aim for a corner. Corners offer more winning possibilities than edge positions.
+                        </p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-indigo-700">3. Fork Creation</h3>
+                        <p class="text-gray-700">
+                            Create situations where you have two winning moves available. This forces your opponent to block one, allowing you to win with the other.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Advanced Techniques</h2>
+                <div class="space-y-4 mb-6">
+                    <div class="glass-effect rounded-xl p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-indigo-700">1. Pattern Recognition</h3>
+                        <p class="text-gray-700">
+                            Learn to recognize common patterns and traps. This helps you both set up winning moves and avoid falling into your opponent's traps.
+                        </p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-indigo-700">2. Defensive Play</h3>
+                        <p class="text-gray-700">
+                            Always watch for your opponent's potential winning moves. Blocking is often more important than creating your own opportunities.
+                        </p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-indigo-700">3. Psychological Tactics</h3>
+                        <p class="text-gray-700">
+                            In online play, use timing and move patterns to create uncertainty in your opponent's mind. This can lead to mistakes.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Common Mistakes to Avoid</h2>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                    <li>Focusing too much on offense and ignoring defense</li>
+                    <li>Not paying attention to your opponent's potential winning moves</li>
+                    <li>Taking edge positions when better options are available</li>
+                    <li>Missing opportunities to create forks</li>
+                    <li>Playing too predictably in online matches</li>
+                </ul>
+
+                <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Practice Tips</h2>
+                <div class="space-y-4 mb-6">
+                    <div class="glass-effect rounded-xl p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-indigo-700">1. AI Training</h3>
+                        <p class="text-gray-700">
+                            Use our AI opponent to practice different strategies. Start with easy difficulty and gradually increase the challenge.
+                        </p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-indigo-700">2. Analyze Your Games</h3>
+                        <p class="text-gray-700">
+                            Review your matches to identify patterns in your wins and losses. Learn from your mistakes.
+                        </p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-4">
+                        <h3 class="text-xl font-semibold mb-2 text-indigo-700">3. Experiment with Different Openings</h3>
+                        <p class="text-gray-700">
+                            Try different starting positions and strategies to become a more versatile player.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <a href="../../index.html" class="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                        Start Practicing Now
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-white shadow-lg py-4 px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <div class="text-sm text-gray-600">
+                    © 2025 Tic Tac Toe. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="../about.html" class="text-sm text-gray-600 hover:text-indigo-600">About</a>
+                    <a href="../privacy.html" class="text-sm text-gray-600 hover:text-indigo-600">Privacy Policy</a>
+                    <a href="../terms.html" class="text-sm text-gray-600 hover:text-indigo-600">Terms</a>
+                    <a href="../faq.html" class="text-sm text-gray-600 hover:text-indigo-600">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/pages/js/navbar.js"></script>
+</body>
+
+</html> 

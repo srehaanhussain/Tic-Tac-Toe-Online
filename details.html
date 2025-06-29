@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Web Application | Feature Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #6b46c1 0%, #4299e1 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .game-icon {
+            transition: all 0.3s ease;
+        }
+        .game-icon:hover {
+            transform: scale(1.1);
+        }
+        .section-divider {
+            border-top: 2px dashed #cbd5e0;
+            margin: 3rem 0;
+        }
+        .tech-badge {
+            transition: all 0.2s ease;
+        }
+        .tech-badge:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-16 text-center">
+            <div class="flex justify-center mb-6">
+                <div class="bg-white rounded-full p-4 shadow-xl">
+                    <i class="fas fa-gamepad text-4xl text-purple-600"></i>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Tic Tac Toe Web Application</h1>
+            <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">A feature-rich gaming experience with multiple modes, online multiplayer, and customizable gameplay</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Introduction -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Overview</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    This document details a unique Tic Tac Toe web application that provides a diverse range of gaming experiences through multiple modes, online multiplayer functionality, and adaptable gameplay settings.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-md p-6 feature-card transition-all duration-300">
+                    <div class="text-purple-600 mb-4">
+                        <i class="fas fa-robot text-4xl game-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Smart AI Opponents</h3>
+                    <p class="text-gray-600">Challenge AI with adjustable difficulty levels from beginner to expert.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6 feature-card transition-all duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-users text-4xl game-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Online Multiplayer</h3>
+                    <p class="text-gray-600">Compete with players worldwide in real-time matches with live chat.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6 feature-card transition-all duration-300">
+                    <div class="text-green-600 mb-4">
+                        <i class="fas fa-sliders-h text-4xl game-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Customizable Gameplay</h3>
+                    <p class="text-gray-600">Adjust grid sizes, themes, and player names for personalized experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Core Features -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Core Features</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Left Column -->
+                <div>
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                        <h3 class="text-xl font-semibold mb-4 text-purple-700 flex items-center">
+                            <i class="fas fa-gamepad mr-3"></i> Multiple Game Modes
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Player vs AI (PvAI):</strong> Engage with an intelligent AI opponent offering adjustable difficulty levels.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Player vs Player Offline (PvP Offline):</strong> Classic local multiplayer on a single device.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Player vs Player Online (PvP Online):</strong> Compete against players globally in real-time matches.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-600 flex items-center">
+                            <i class="fas fa-user-shield mr-3"></i> User Account System
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Secure registration and login with email/password credentials</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Personalized user profiles with unique usernames</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Comprehensive game statistics tracking (wins, losses, draws)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Global leaderboards to compare performance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div>
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                        <h3 class="text-xl font-semibold mb-4 text-yellow-600 flex items-center">
+                            <i class="fas fa-brain mr-3"></i> AI Difficulty Levels
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Easy:</strong> Makes random moves with basic strategy elements</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Medium:</strong> Strategic thinking with some unpredictability</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Hard:</strong> Uses minimax algorithm for optimal play</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-green-600 flex items-center">
+                            <i class="fas fa-cog mr-3"></i> Customizable Game Options
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Adaptable grid sizes (3x3, 4x4, 5x5)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Light and dark visual themes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Customizable player names</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Online Multiplayer Features -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Online Multiplayer Features</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-5 flex items-start">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-wifi text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Real-time Presence</h4>
+                        <p class="text-gray-600 text-sm">See who's online and available to play</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-5 flex items-start">
+                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-bell text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Challenge System</h4>
+                        <p class="text-gray-600 text-sm">Invite specific players to matches</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-5 flex items-start">
+                    <div class="bg-green-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-comments text-green-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">In-Game Chat</h4>
+                        <p class="text-gray-600 text-sm">Communicate during matches</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-5 flex items-start">
+                    <div class="bg-red-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-user-slash text-red-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Abandonment Handling</h4>
+                        <p class="text-gray-600 text-sm">Fair play when opponents disconnect</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-5 flex items-start">
+                    <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-search text-yellow-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Player Search</h4>
+                        <p class="text-gray-600 text-sm">Find opponents with filtering</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-5 flex items-start">
+                    <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-sync-alt text-indigo-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Real-time Sync</h4>
+                        <p class="text-gray-600 text-sm">Seamless game state updates</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- How It Works -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">How It Works</h2>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="hidden md:block absolute left-1/2 h-full w-1 bg-gradient-to-b from-purple-500 to-blue-500 transform -translate-x-1/2"></div>
+                
+                <!-- Timeline items -->
+                <div class="space-y-8 md:space-y-16">
+                    <!-- Item 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:pr-16 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-xl font-semibold text-purple-700">Authentication</h3>
+                            <p class="text-gray-600">Register new accounts or log in to access online features</p>
+                        </div>
+                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto md:mx-0">
+                            <i class="fas fa-user-lock text-purple-600 text-2xl"></i>
+                        </div>
+                        <div class="flex-1 md:pl-16 md:text-left mt-4 md:mt-0">
+                            <!-- Empty on purpose for alignment -->
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:pr-16 md:text-right mb-4 md:mb-0">
+                            <!-- Empty on purpose for alignment -->
+                        </div>
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto md:mx-0">
+                            <i class="fas fa-list-ol text-blue-600 text-2xl"></i>
+                        </div>
+                        <div class="flex-1 md:pl-16 md:text-left mt-4 md:mt-0">
+                            <h3 class="text-xl font-semibold text-blue-600">Game Mode Selection</h3>
+                            <p class="text-gray-600">Choose between PvAI, PvP Offline, or PvP Online with customizable settings</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:pr-16 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-xl font-semibold text-green-600">Gameplay</h3>
+                            <p class="text-gray-600">Alternate turns, detect wins automatically, and track scores</p>
+                        </div>
+                        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto md:mx-0">
+                            <i class="fas fa-play text-green-600 text-2xl"></i>
+                        </div>
+                        <div class="flex-1 md:pl-16 md:text-left mt-4 md:mt-0">
+                            <!-- Empty on purpose for alignment -->
+                        </div>
+                    </div>
+                    
+                    <!-- Item 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:pr-16 md:text-right mb-4 md:mb-0">
+                            <!-- Empty on purpose for alignment -->
+                        </div>
+                        <div class="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center mx-auto md:mx-0">
+                            <i class="fas fa-globe text-yellow-600 text-2xl"></i>
+                        </div>
+                        <div class="flex-1 md:pl-16 md:text-left mt-4 md:mt-0">
+                            <h3 class="text-xl font-semibold text-yellow-600">Online Multiplayer</h3>
+                            <p class="text-gray-600">Real-time synchronization, challenge system, and in-game chat</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 5 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:pr-16 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-xl font-semibold text-indigo-600">User Profile</h3>
+                            <p class="text-gray-600">View and modify username, game statistics, and share with friends</p>
+                        </div>
+                        <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center mx-auto md:mx-0">
+                            <i class="fas fa-user-circle text-indigo-600 text-2xl"></i>
+                        </div>
+                        <div class="flex-1 md:pl-16 md:text-left mt-4 md:mt-0">
+                            <!-- Empty on purpose for alignment -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Technical Implementation -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Technical Implementation</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Firebase Integration -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-red-600 flex items-center">
+                        <i class="fas fa-fire mr-3"></i> Firebase Integration
+                    </h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tech-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Authentication</span>
+                        <span class="tech-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Realtime Database</span>
+                        <span class="tech-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Presence System</span>
+                        <span class="tech-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Security Rules</span>
+                    </div>
+                    <p class="text-gray-600">
+                        Secure user authentication, real-time game state synchronization, online presence tracking, and data protection.
+                    </p>
+                </div>
+                
+                <!-- Game Logic -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-purple-600 flex items-center">
+                        <i class="fas fa-code mr-3"></i> Game Logic
+                    </h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tech-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Modular Code</span>
+                        <span class="tech-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Minimax AI</span>
+                        <span class="tech-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Win Detection</span>
+                        <span class="tech-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Score Tracking</span>
+                    </div>
+                    <p class="text-gray-600">
+                        Well-structured code with AI algorithms, efficient win detection for various grid sizes, and persistent score tracking.
+                    </p>
+                </div>
+                
+                <!-- UI/UX -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600 flex items-center">
+                        <i class="fas fa-paint-brush mr-3"></i> UI/UX Design
+                    </h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tech-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
+                        <span class="tech-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Responsive</span>
+                        <span class="tech-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Animations</span>
+                        <span class="tech-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Mobile-Friendly</span>
+                    </div>
+                    <p class="text-gray-600">
+                        Beautiful, responsive interface with smooth animations and intuitive touch support across all devices.
+                    </p>
+                </div>
+                
+                <!-- Performance -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-green-600 flex items-center">
+                        <i class="fas fa-tachometer-alt mr-3"></i> Performance
+                    </h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tech-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Loading Screen</span>
+                        <span class="tech-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Real-time Updates</span>
+                        <span class="tech-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Debounced Functions</span>
+                        <span class="tech-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Optimized AI</span>
+                    </div>
+                    <p class="text-gray-600">
+                        Optimized for fast performance with loading indicators, efficient updates, and mobile-friendly AI algorithms.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Additional Features -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Additional Features</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Accessibility -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-indigo-600 p-4 text-white">
+                        <h3 class="text-xl font-semibold flex items-center">
+                            <i class="fas fa-universal-access mr-2"></i> Accessibility
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-keyboard text-indigo-500 mt-1 mr-2"></i>
+                                <span>Keyboard navigation support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-eye-low-vision text-indigo-500 mt-1 mr-2"></i>
+                                <span>Screen reader compatibility</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-text-height text-indigo-500 mt-1 mr-2"></i>
+                                <span>Customizable text size</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Social -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-blue-600 p-4 text-white">
+                        <h3 class="text-xl font-semibold flex items-center">
+                            <i class="fas fa-share-alt mr-2"></i> Social Features
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-user-friends text-blue-500 mt-1 mr-2"></i>
+                                <span>Direct player challenges</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chart-line text-blue-500 mt-1 mr-2"></i>
+                                <span>View opponent statistics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-share-square text-blue-500 mt-1 mr-2"></i>
+                                <span>Friend invitation system</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Security -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-green-600 p-4 text-white">
+                        <h3 class="text-xl font-semibold flex items-center">
+                            <i class="fas fa-shield-alt mr-2"></i> Security
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-lock text-green-500 mt-1 mr-2"></i>
+                                <span>Secure authentication</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-double text-green-500 mt-1 mr-2"></i>
+                                <span>Data validation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-user-slash text-green-500 mt-1 mr-2"></i>
+                                <span>Account deletion option</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Conclusion -->
+        <section class="text-center mb-16">
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8">
+                <i class="fas fa-star text-yellow-400 text-5xl mb-6"></i>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">The Ultimate Tic Tac Toe Experience</h2>
+                <p class="text-gray-600 mb-6">
+                    This application blends the timeless appeal of the classic game with cutting-edge web technologies, 
+                    providing both casual entertainment and competitive challenges across various devices.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://download-tic-tac-toe.netlify.app/" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                        <i class="fas fa-download mr-2"></i> Download Version
+                    </a>
+                    <a href="https://game-tac-toe.netlify.app/" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                        <i class="fas fa-gamepad mr-2"></i> Web Version
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="bg-white rounded-full p-2 mr-3">
+                            <i class="fas fa-gamepad text-purple-600"></i>
+                        </div>
+                        <span class="text-xl font-bold">Tic Tac Toe Web App</span>
+                    </div>
+                    <p class="text-gray-400 mt-2">A feature-rich gaming experience</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <h4 class="text-lg font-semibold mb-3">Rehaan Hussain</h4>
+                    <p class="text-gray-400">Founder & Developer</p>
+                    <div class="mt-3 space-x-4">
+                        <a href="mailto:tooluxeapp@gmail.com" class="text-blue-400 hover:text-blue-300">
+                            <i class="fas fa-envelope"></i> tooluxeapp@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Tic Tac Toe Web Application. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for feature cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            featureCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

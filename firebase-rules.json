@@ -1,0 +1,33 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null",
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid",
+        "status": {
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "lastActive": {
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "gameInvites": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        }
+      }
+    },
+    "games": {
+      ".read": "auth != null",
+      "$gameId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    ".info": {
+      "connected": {
+        ".read": "auth != null"
+      }
+    }
+  }
+} 

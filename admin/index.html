@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Admin Panel</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="adminLoginSection" class="section">
+        <div class="container">
+            <div class="form-container">
+                <h1>Admin Login</h1>
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminEmail">Email</label>
+                        <input type="email" id="adminEmail" placeholder="Enter admin email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" placeholder="Enter password" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="adminLogin()">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="adminDashboardSection" class="section hidden">
+        <header class="admin-header">
+            <h1>Tic Tac Toe Admin Dashboard</h1>
+            <button type="button" class="btn btn-danger" onclick="adminLogout()">Logout</button>
+        </header>
+
+        <div class="admin-container">
+            <div class="users-section">
+                <h2>User Management</h2>
+                <div class="search-bar">
+                    <input type="text" id="userSearch" placeholder="Search by username or email" onkeyup="filterUsers()">
+                    <select id="statusFilter" onchange="filterUsers()">
+                        <option value="all">All Users</option>
+                        <option value="verified">Verified</option>
+                        <option value="unverified">Unverified</option>
+                    </select>
+                </div>
+                <div class="user-list-container">
+                    <table id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Games Played</th>
+                                <th>Rank</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersList">
+                            <!-- User data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="userPagination" class="pagination">
+                    <button id="prevPage" onclick="goToPrevPage()">Previous</button>
+                    <span id="pageInfo">Page 1</span>
+                    <button id="nextPage" onclick="goToNextPage()">Next</button>
+                </div>
+            </div>
+            
+            <div class="user-details-container hidden" id="userDetailPanel">
+                <h3>User Details</h3>
+                <div id="userDetails">
+                    <!-- User details will be loaded here -->
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="closeUserDetails()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="alertContainer" class="alert-container"></div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/custom-alert.js"></script>
+    <script src="../js/notifications.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html> 
